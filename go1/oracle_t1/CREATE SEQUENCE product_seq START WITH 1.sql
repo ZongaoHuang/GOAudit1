@@ -1,0 +1,8 @@
+CREATE SEQUENCE product_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER product_trigger
+BEFORE INSERT ON products
+FOR EACH ROW
+BEGIN
+  SELECT product_seq.nextval INTO :new.id FROM dual;
+END;
